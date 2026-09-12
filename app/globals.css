@@ -189,7 +189,7 @@
     /* No Result */
 
     .no-result {
-        @apply text-base-regular text-center !text-light-3;
+        @apply text-base-regular text-center text-light-3!;
     }
 
     /* Community Card */
@@ -199,7 +199,7 @@
     }
 
     .community-card_btn {
-        @apply rounded-lg bg-primary-500 px-5 py-1.5 !text-small-regular !text-light-1;
+        @apply rounded-lg bg-primary-500 px-5 py-1.5 text-small-regular! text-light-1!;
     }
 
     /* Thread Card */
@@ -219,17 +219,17 @@
     }
 
     .user-card_btn {
-        @apply h-auto min-w-[74px] rounded-lg bg-primary-500 !text-[12px] !text-light-1;
+        @apply h-auto min-w-18.5 rounded-lg bg-primary-500 text-[12px]! text-light-1!;
     }
 
     /* Search */
 
     .searchbar {
-        @apply flex gap-1 rounded-lg bg-dark-3 px-4 py-2;
+        @apply flex w-full items-center gap-3 rounded-lg bg-dark-3 px-4 py-2;
     }
 
     .searchbar_input {
-        @apply border-none bg-dark-3 text-base-regular !text-light-4 outline-none;
+        @apply min-w-0 flex-1 border-none bg-transparent! text-base-regular text-light-1! outline-none;
     }
 
     /* Topbar */
@@ -359,7 +359,7 @@
 /* Tab */
 
 .tab {
-    @apply flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 !text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:!text-light-2;
+    @apply flex min-h-12.5 flex-1 items-center gap-3 bg-dark-2 text-light-2! data-[state=active]:bg-[#0e0e12] data-[state=active]:text-light-2!;
 }
 
 /* No Focus */
@@ -375,11 +375,11 @@
 }
 
 .account-form_image-input {
-    @apply cursor-pointer border-none bg-transparent outline-none file:!text-blue;
+    @apply cursor-pointer border-none bg-transparent outline-none file:text-blue!;
 }
 
 .account-form_input {
-    @apply border border-dark-4 bg-dark-3 !text-light-1;
+    @apply border border-dark-4 bg-dark-3 text-light-1!;
 }
 
 /* Comment Form */
@@ -389,5 +389,5 @@
 }
 
 .comment-form_btn {
-    @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular !text-light-1 max-xs:w-full;
+    @apply rounded-3xl bg-primary-500 px-8 py-2 text-small-regular! text-light-1! max-xs:w-full;
 }
