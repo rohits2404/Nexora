@@ -4,31 +4,34 @@ import { sidebarLinks } from "@/constants";
 import { Show, SignOutButton, useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const LeftSidebar = () => {
-    const router = useRouter();
     const pathname = usePathname();
-
     const { userId } = useAuth();
 
     return (
         <section className="custom-scrollbar leftsidebar">
             <div className="flex w-full flex-1 flex-col gap-6 px-6">
                 {sidebarLinks.map((link) => {
-                    const isActive =
-                        (pathname.includes(link.route) &&
-                            link.route.length > 1) ||
-                        pathname === link.route;
+                    const route =
+                        link.route === "/profile"
+                            ? userId
+                                ? `/profile/${userId}`
+                                : "/profile"
+                            : link.route;
 
-                    if (link.route === "/profile")
-                        link.route = `${link.route}/${userId}`;
+                    const isActive =
+                        (pathname.includes(route) && route.length > 1) ||
+                        pathname === route;
 
                     return (
                         <Link
-                            href={link.route}
+                            href={route}
                             key={link.label}
-                            className={`leftsidebar_link ${isActive && "bg-primary-500 "}`}
+                            className={`leftsidebar_link ${
+                                isActive ? "bg-primary-500" : ""
+                            }`}
                         >
                             <Image
                                 src={link.imgURL}
@@ -46,7 +49,7 @@ export const LeftSidebar = () => {
             </div>
 
             <div className="mt-10 px-6">
-                <Show when={"signed-in"}>
+                <Show when="signed-in">
                     <SignOutButton>
                         <div className="flex cursor-pointer gap-4 p-4">
                             <Image
