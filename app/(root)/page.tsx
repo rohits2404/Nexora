@@ -2,7 +2,7 @@ import { ThreadCard } from "@/components/cards/ThreadCard";
 import { Pagination } from "@/components/shared/Pagination";
 import { fetchPosts } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -11,6 +11,9 @@ const Home = async ({
 }: {
     searchParams: { [key: string]: string | undefined };
 }) => {
+    const { userId } = await auth();
+    if (!userId) redirect("/sign-in");
+
     const user = await currentUser();
     if (!user) return null;
 

@@ -6,6 +6,9 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const ActivityPage = async () => {
+    const { userId } = await auth();
+    if (!userId) redirect("/sign-in");
+
     const user = await currentUser();
     if (!user) return null;
 

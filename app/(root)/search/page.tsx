@@ -11,6 +11,9 @@ const SearchPage = async ({
 }: {
     searchParams: { [key: string]: string | undefined };
 }) => {
+    const { userId } = await auth();
+    if (!userId) redirect("/sign-in");
+
     const user = await currentUser();
     if (!user) return null;
 

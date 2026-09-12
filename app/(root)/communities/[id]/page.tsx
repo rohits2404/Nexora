@@ -13,6 +13,9 @@ const IndividualCommunityPage = async ({
 }: {
     params: Promise<{ id: string }>;
 }) => {
+    const { userId } = await auth();
+    if (!userId) redirect("/sign-in");
+
     const user = await currentUser();
     if (!user) return null;
 
